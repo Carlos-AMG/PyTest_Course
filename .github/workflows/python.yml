@@ -21,10 +21,8 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: Set up virtual environment
-        run: |
-          python -m venv venv
-          source venv/bin/activate
+      - name: echo test
+        run: echo ${GITHUB_WORKSPACE}
 
       - name: Install dependencies
         run: |
