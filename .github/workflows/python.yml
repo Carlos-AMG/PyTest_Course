@@ -30,8 +30,8 @@ jobs:
       - name: Set environment variables
         run: |
           echo "PYTHONPATH=${{ github.workspace }}:${{ github.workspace }}/api/coronavstech" >> $GITHUB_ENV
-          echo "DJANGO_SETTINGS_MODULE=coronavstech.settings" >> $GITHUB_ENV
+          echo "DJANGO_SETTINGS_MODULE=api.coronavstech.settings" >> $GITHUB_ENV
 
       - name: Run tests
         run: |
-          pytest api/coronavstech/companies/tests -s -v --durations=0 --cov=. -m "not skip_in_ci"
+          pytest api/coronavstech/ -s -v --durations=0 --cov=. -m "not skip_in_ci"
