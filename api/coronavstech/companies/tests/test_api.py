@@ -1,5 +1,6 @@
 import json
 import pytest
+
 # from unittest import TestCase
 # from django.test import Client
 from django.urls import reverse
@@ -122,6 +123,8 @@ from api.coronavstech.companies.models import Company
 
 companies_url = reverse("companies-list")
 pytestmark = pytest.mark.django_db
+
+
 # ------------- Test Get Companies ---------------
 def test_zero_companies_should_return_empty_list(client) -> None:
     response = client.get(companies_url)
@@ -227,3 +230,7 @@ def test_logged_info_level(caplog) -> None:
     with caplog.at_level(logging.INFO):
         logger.info("I am logging info level")
     assert "I am logging info level" in caplog.text
+
+
+def test_workflow_works() -> None:
+    assert 1 == 1
