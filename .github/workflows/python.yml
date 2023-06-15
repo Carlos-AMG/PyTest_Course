@@ -22,8 +22,9 @@ jobs:
           python-version: 3.8
 
       - name: echo test
-        run: echo ${GITHUB_WORKSPACE}
-
+        run: |
+          echo ${GITHUB_WORKSPACE}
+          ls ${GITHUB_WORKSPACE}
       - name: Install dependencies
         run: |
           python pip -m install --upgrade pip
