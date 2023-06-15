@@ -28,9 +28,9 @@ jobs:
           pipenv install --system
 
       - name: Set environment variables
-        env:
-          PYTHONPATH: ${{ github.workspace }}:${{ github.workspace }}/api/coronavstech
-          DJANGO_SETTINGS_MODULE: coronavstech.settings
+        run: |
+          echo "PYTHONPATH=${{ github.workspace }}:${{ github.workspace }}/api/coronavstech" >> $GITHUB_ENV
+          echo "DJANGO_SETTINGS_MODULE=coronavstech.settings" >> $GITHUB_ENV
 
       - name: Run tests
         run: |
