@@ -3,3 +3,4 @@ __pycache__/
 gist/
 *.sqlite3
 .env
+config.py
