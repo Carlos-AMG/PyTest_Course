@@ -7,6 +7,7 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from django.core.mail import send_mail
 from rest_framework.request import Request
+from fibonacci.naive import fibonacci_naive
 
 
 # Create your views here.
@@ -27,3 +28,10 @@ def send_company_email(request: Request):
     return Response(
         {"status": "success", "info": "email sent successfully"}, status=200
     )
+
+
+@api_view(http_method_names=["GET"])
+def get_fibonacci_number(request: Request):
+    n = int(request.GET.get("n"))
+    res = fibonacci_naive(n)
+    return Response({"n": n, "fibonacci": res})

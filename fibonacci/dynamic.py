@@ -4,10 +4,11 @@ def fibonacci_dynamic(n: int) -> int:
         fib_list.append(fib_list[i] + fib_list[i - 1])
     return fib_list[n]
 
+
 def better_fibonacci_dynamic(n: int) -> int:
     fib_1, fib_2 = 0, 1
-    for i in range(1, n+1):
+    for i in range(1, n + 1):
         fi = fib_1 + fib_2
         fib_1, fib_2 = fib_2, fi
-    
+
     return fib_1
