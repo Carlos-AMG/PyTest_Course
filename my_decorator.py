@@ -26,7 +26,6 @@ def my_parametrized(identifiers: str, values: List[Tuple[int, int]]) -> Decorato
                 identifiers=identifiers, values=values
             )
             for kwargs_for_function in list_of_kwargs_for_function:
-        
                 print(
                     f"calling function {function.__name__} with  {kwargs_for_function}"
                 )
