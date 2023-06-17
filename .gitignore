@@ -4,3 +4,4 @@ gist/
 *.sqlite3
 .env
 config.py
+.coverage
