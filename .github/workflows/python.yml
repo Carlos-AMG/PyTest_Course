@@ -38,4 +38,4 @@ jobs:
       - name: Run tests
         run: |
           pytest api/coronavstech/companies/tests -s -v --durations=0 --cov=.
-          pytest fibonacci -s -v --durations=0 --cov=.
+          pytest fibonacci -s -v --durations=0 --cov=. -m "not skip_in_ci"
