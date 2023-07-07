@@ -1,4 +1,5 @@
 import json
+from typing import List
 import pytest
 
 # from unittest import TestCase
@@ -132,11 +133,6 @@ def test_zero_companies_should_return_empty_list(client) -> None:
     assert json.loads(response.content) == []
 
 
-@pytest.fixture
-def amazon() -> Company:
-    return Company.objects.create(name="amazon")
-
-
 def test_one_company_exists_should_suceed(client, amazon) -> None:
     response = client.get(companies_url)
     response_content = json.loads(response.content)[0]
@@ -241,20 +237,16 @@ def test_workflow_works() -> None:
 
 
 # ------------- Learn about fixtures tests ---------------
-@pytest.fixture
-def company(**kwargs):
-    def __company_factory(**kwargs) -> Company:
-        company_name = kwargs.pop("name", "Test Company INC")
-        return Company.objects.create(name=company_name, **kwargs)
-
-    return __company_factory
 
 
-def test_multiple_companies_exists_should_suceed(client, company) -> None:
-    tiktok = company(name="TikTok")
-    twitch = company(name="Twitch")
-    test_company = company()
-    company_names = {twitch.name, tiktok.name, test_company.name}
+@pytest.mark.parametrize(
+    "companies",
+    [["TikTok", "Twitch", "Test Company INC"], ["Facebook", "Instagram"]],
+    ids=["3 T companies", "Zuckerberg's companies"],
+    indirect=True,
+)
+def test_multiple_companies_exists_should_suceed(client, companies) -> None:
+    company_names = set(map(lambda x: x.name, companies))
     response_companies = client.get(companies_url).json()
     assert len(company_names) == len(response_companies)
     response_companies_names = set(

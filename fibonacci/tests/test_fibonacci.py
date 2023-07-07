@@ -3,7 +3,7 @@ from fibonacci.naive import fibonacci_naive
 from fibonacci.cached import fibonacci_cached, fibonacci_lru_cached
 from fibonacci.dynamic import fibonacci_dynamic, better_fibonacci_dynamic
 from typing import Callable
-from conftest import time_tracker
+from fibonacci.conftest import time_tracker
 
 # from my_decorator import my_parametrized
 
